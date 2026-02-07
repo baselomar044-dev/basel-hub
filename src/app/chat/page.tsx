@@ -179,6 +179,7 @@ export default function AIAssistantChat() {
   
   // Persona and mode state
   const [activePersonas, setActivePersonas] = useState<string[]>(['genius', 'creative', 'coder'])
+  const [displayedPersonas, setDisplayedPersonas] = useState<string[]>([])
   const [autoPersona, setAutoPersona] = useState(true)
   const [deepThinking, setDeepThinking] = useState(false)
   const [deepSearch, setDeepSearch] = useState(false)
@@ -381,6 +382,7 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
     setIsThinking(deepThinking)
 
     const detectedPersonas = detectPersona(input)
+    setDisplayedPersonas(detectedPersonas) // Update displayed personas in UI
     const systemPrompt = buildSystemPrompt(detectedPersonas)
 
     try {
@@ -605,8 +607,8 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
             <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} whitespace-nowrap flex items-center gap-1`}>
               <Zap className="w-3 h-3 text-violet-400" /> Auto-detect (50 personas):
             </span>
-            {detectedPersonas.length > 0 ? (
-              detectedPersonas.map(pid => {
+            {displayedPersonas.length > 0 ? (
+              displayedPersonas.map(pid => {
                 const persona = PERSONAS.find(p => p.id === pid)
                 if (!persona) return null
                 const Icon = persona.icon
