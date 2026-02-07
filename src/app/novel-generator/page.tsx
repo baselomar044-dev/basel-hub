@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { 
-  ArrowLeft, BookOpen, Wand2, Download, Copy, RefreshCw, Sparkles,
+  BookOpen, Wand2, Download, Copy, RefreshCw, Sparkles,
   Skull, Heart, Rocket, Sword, Ghost, Crown, Map, Clock,
   Users, Brain, Zap, Moon, Sun, Flame, Shield, Eye,
   Mountain, Ship, Plane, Building, Music, Palette, Code,
@@ -86,7 +85,6 @@ const TIME_PERIODS = [
 ]
 
 export default function NovelGenerator() {
-  const router = useRouter()
   const [keyword, setKeyword] = useState('')
   const [selectedGenres, setSelectedGenres] = useState<string[]>([])
   const [selectedLength, setSelectedLength] = useState('novella')
@@ -253,12 +251,6 @@ Make this unique, compelling, and ready for an author to start writing immediate
     <div className="min-h-screen bg-gray-900 text-white">
       <header className="bg-gray-800/50 border-b border-gray-700 p-4">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
-          <button 
-            onClick={() => router.push('/dashboard')}
-            className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
           <BookOpen className="w-8 h-8 text-amber-400" />
           <div>
             <h1 className="text-xl font-bold">Novel Story Generator</h1>
