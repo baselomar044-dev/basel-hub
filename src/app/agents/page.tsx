@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { 
-  Bot, Plus, Trash2, Edit3, Save, Copy, Download, Upload, 
+  ArrowLeft, Bot, Plus, Trash2, Edit3, Save, Copy, Download, Upload, 
   Brain, Search, MessageSquare, Paperclip, Key, Sparkles,
   Zap, Heart, Shield, Target, Lightbulb, Flame, Moon, Sun,
   Crown, Sword, Music, Palette, Code, BookOpen, Calculator,
@@ -209,6 +210,7 @@ const API_PROVIDERS = [
 ]
 
 export default function AgentGenerator() {
+  const router = useRouter()
   const [agents, setAgents] = useState<Agent[]>([])
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null)
   const [isCreating, setIsCreating] = useState(false)
@@ -384,6 +386,12 @@ This is a preview of how I would interact based on my configuration.`
       <header className="bg-gray-800/50 border-b border-gray-700 p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
+            <button 
+              onClick={() => router.push('/dashboard')}
+              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
             <Bot className="w-8 h-8 text-violet-400" />
             <div>
               <h1 className="text-xl font-bold">Agent Generator</h1>

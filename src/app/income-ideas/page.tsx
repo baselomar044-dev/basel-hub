@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { DollarSign, Lightbulb, TrendingUp, RefreshCw, Download, Filter,
+import { useRouter } from 'next/navigation'
+import { ArrowLeft, DollarSign, Lightbulb, TrendingUp, RefreshCw, Download, Filter,
          Clock, Zap, Target, Users, Briefcase, Globe, Laptop, Smartphone,
          ShoppingBag, PenTool, Camera, Mic, BookOpen, Code, Palette,
          Heart, Star, ChevronDown, ExternalLink, Check, Sparkles } from 'lucide-react'
@@ -59,6 +60,7 @@ const STARTUP_COSTS = [
 ]
 
 export default function IncomeIdeasGenerator() {
+  const router = useRouter()
   // Filters
   const [skills, setSkills] = useState('')
   const [interests, setInterests] = useState('')
@@ -231,6 +233,12 @@ ${idea.resources.map(r => `- [${r.name}](${r.url})`).join('\n')}
       <header className="bg-gray-800 border-b border-gray-700 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
+            <button 
+              onClick={() => router.push('/dashboard')}
+              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
               <DollarSign className="w-6 h-6 text-white" />
             </div>

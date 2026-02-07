@@ -12,8 +12,8 @@ import {
 const TOOLS = [
   {
     id: 'chat',
-    name: 'AI Chat',
-    description: '5 Specialized AI assistants',
+    name: 'AI Assistant',
+    description: 'ONE AI with 20+ personas - Auto adapts',
     icon: FiMessageSquare,
     color: 'from-blue-500 to-cyan-500',
     href: '/chat',
@@ -46,15 +46,7 @@ const TOOLS = [
     href: '/organizer',
     emoji: '📋'
   },
-  {
-    id: 'income',
-    name: 'Income Ideas',
-    description: 'Track income opportunities',
-    icon: FiDollarSign,
-    color: 'from-emerald-500 to-teal-500',
-    href: '/income',
-    emoji: '💰'
-  },
+
   {
     id: 'projects',
     name: 'My Projects',
@@ -82,14 +74,33 @@ const TOOLS = [
     href: '/passwords',
     emoji: '🔐'
   },
+
   {
-    id: 'qr',
-    name: 'QR Generator',
-    description: 'Create QR codes instantly',
+    id: 'novel-generator',
+    name: 'Novel Generator',
+    description: 'Generate stories from 1+ words - 35+ genres',
+    icon: FiEdit3,
+    color: 'from-purple-500 to-violet-500',
+    href: '/novel-generator',
+    emoji: '📖'
+  },
+  {
+    id: 'prompt-generator',
+    name: 'Prompt Generator',
+    description: 'Generate prompts from 1+ words - 50+ categories',
     icon: FiZap,
-    color: 'from-pink-500 to-rose-500',
-    href: '/qr',
-    emoji: '📱'
+    color: 'from-amber-500 to-orange-500',
+    href: '/prompt-generator',
+    emoji: '✨'
+  },
+  {
+    id: 'income-ideas',
+    name: 'Income Ideas',
+    description: 'Generate money-making ideas',
+    icon: FiDollarSign,
+    color: 'from-green-500 to-emerald-500',
+    href: '/income-ideas',
+    emoji: '💡'
   },
   {
     id: 'settings',

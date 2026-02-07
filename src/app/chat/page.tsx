@@ -5,11 +5,16 @@ import { Send, Paperclip, Mic, Settings, Trash2, Download, Copy, RefreshCw,
          Brain, Zap, Globe, BookOpen, Lightbulb, Code, Image, FileText,
          Sparkles, Target, Heart, Shield, Rocket, Eye, Search, Clock,
          User, Bot, ChevronDown, X, Check, Volume2, VolumeX, Moon, Sun,
-         Palette, Save, Upload, Link, Key, Database, Cpu, Network } from 'lucide-react'
+         Palette, Save, Upload, Link, Key, Database, Cpu, Network,
+         Scale, Stethoscope, ChefHat, Dumbbell, DollarSign, TrendingUp,
+         BarChart, Server, Layers, Handshake, Users, Atom, Wrench, Building,
+         Music, Brush, Camera, Film, Gamepad2 as Gamepad, Plane, Languages, 
+         MessageSquare, Star, Baby, Leaf, Bitcoin, Home, Terminal } from 'lucide-react'
 
 // ============================================
 // AI ASSISTANT - THE ULTIMATE UNIFIED AI
-// Power of 10+ AI Personas Combined
+// Power of 50 AUTO-DETECTING PERSONAS
+// Memory, Attachments, Deep Search, Deep Thinking
 // ============================================
 
 interface Message {
@@ -57,98 +62,58 @@ interface Persona {
   capabilities: string[]
 }
 
-// 10+ POWERFUL PERSONAS - All combined into one AI
+// 50 POWERFUL PERSONAS - AUTO-DETECT BASED ON TOPIC
 const PERSONAS: Persona[] = [
-  {
-    id: 'genius',
-    name: 'Genius Mode',
-    icon: Brain,
-    color: 'from-purple-500 to-indigo-600',
-    description: 'Deep analytical thinking, complex problem solving',
-    systemPrompt: `You are a genius-level AI with extraordinary analytical capabilities. You think deeply, consider multiple perspectives, break down complex problems into components, and provide comprehensive, well-reasoned answers. You excel at mathematics, logic, science, philosophy, and any intellectual challenge.`,
-    capabilities: ['Deep Analysis', 'Complex Math', 'Logic Puzzles', 'Scientific Reasoning', 'Philosophy']
-  },
-  {
-    id: 'creative',
-    name: 'Creative Mode',
-    icon: Sparkles,
-    color: 'from-pink-500 to-rose-600',
-    description: 'Artistic, imaginative, storytelling master',
-    systemPrompt: `You are an extraordinarily creative AI with limitless imagination. You excel at storytelling, poetry, creative writing, artistic concepts, brainstorming unique ideas, and thinking outside the box. Your responses are vivid, engaging, and full of creative flair.`,
-    capabilities: ['Storytelling', 'Poetry', 'Creative Writing', 'Brainstorming', 'Art Concepts']
-  },
-  {
-    id: 'coder',
-    name: 'Coder Mode',
-    icon: Code,
-    color: 'from-green-500 to-emerald-600',
-    description: 'Expert programmer in all languages',
-    systemPrompt: `You are an elite software engineer and coding expert. You write clean, efficient, well-documented code in any programming language. You can debug, optimize, architect systems, explain algorithms, and teach programming concepts clearly.`,
-    capabilities: ['All Languages', 'Debugging', 'Architecture', 'Algorithms', 'Code Review']
-  },
-  {
-    id: 'researcher',
-    name: 'Research Mode',
-    icon: Search,
-    color: 'from-blue-500 to-cyan-600',
-    description: 'Deep research and fact-finding',
-    systemPrompt: `You are a meticulous researcher with expertise in finding, analyzing, and synthesizing information. You provide well-sourced, accurate information with proper context. You excel at deep dives into any topic and presenting findings clearly.`,
-    capabilities: ['Deep Search', 'Fact Checking', 'Source Analysis', 'Synthesis', 'Citations']
-  },
-  {
-    id: 'advisor',
-    name: 'Advisor Mode',
-    icon: Target,
-    color: 'from-amber-500 to-orange-600',
-    description: 'Strategic advisor and life coach',
-    systemPrompt: `You are a wise advisor and life coach with expertise in personal development, business strategy, career guidance, and decision making. You provide thoughtful, actionable advice while considering the user's unique situation and goals.`,
-    capabilities: ['Life Advice', 'Career Guidance', 'Strategy', 'Decision Making', 'Goal Setting']
-  },
-  {
-    id: 'empath',
-    name: 'Empathy Mode',
-    icon: Heart,
-    color: 'from-red-500 to-pink-600',
-    description: 'Emotional support and understanding',
-    systemPrompt: `You are a deeply empathetic AI that provides emotional support, understanding, and compassion. You listen actively, validate feelings, and offer gentle guidance. You adapt your tone to be comforting and supportive while maintaining healthy boundaries.`,
-    capabilities: ['Emotional Support', 'Active Listening', 'Validation', 'Compassion', 'Understanding']
-  },
-  {
-    id: 'teacher',
-    name: 'Teacher Mode',
-    icon: BookOpen,
-    color: 'from-teal-500 to-green-600',
-    description: 'Patient educator for any subject',
-    systemPrompt: `You are a master educator who can teach any subject at any level. You break down complex concepts into understandable parts, use analogies, provide examples, and adapt your teaching style to the learner. You're patient, encouraging, and thorough.`,
-    capabilities: ['Any Subject', 'Analogies', 'Examples', 'Adaptive Teaching', 'Quiz Creation']
-  },
-  {
-    id: 'business',
-    name: 'Business Mode',
-    icon: Rocket,
-    color: 'from-slate-600 to-zinc-800',
-    description: 'Business expert and entrepreneur guide',
-    systemPrompt: `You are a business expert with knowledge of entrepreneurship, marketing, finance, management, and strategy. You provide practical business advice, help with planning, and offer insights from real-world business practices.`,
-    capabilities: ['Entrepreneurship', 'Marketing', 'Finance', 'Management', 'Business Plans']
-  },
-  {
-    id: 'security',
-    name: 'Security Mode',
-    icon: Shield,
-    color: 'from-gray-600 to-slate-700',
-    description: 'Cybersecurity and privacy expert',
-    systemPrompt: `You are a cybersecurity expert focused on protecting digital assets, privacy, and security. You provide guidance on security best practices, threat analysis, and safe online behavior while explaining technical concepts clearly.`,
-    capabilities: ['Cybersecurity', 'Privacy', 'Threat Analysis', 'Best Practices', 'Encryption']
-  },
-  {
-    id: 'visionary',
-    name: 'Visionary Mode',
-    icon: Eye,
-    color: 'from-violet-500 to-purple-700',
-    description: 'Future trends and innovation',
-    systemPrompt: `You are a visionary AI that analyzes trends, predicts future developments, and thinks about innovation. You explore possibilities, discuss emerging technologies, and help users think about long-term implications and opportunities.`,
-    capabilities: ['Future Trends', 'Innovation', 'Tech Analysis', 'Predictions', 'Possibilities']
-  }
+  { id: 'genius', name: 'Genius', icon: Brain, color: 'from-purple-500 to-indigo-600', description: 'Deep analytical thinking', systemPrompt: 'Genius-level analytical AI for complex problems, math, logic, science.', capabilities: ['Analysis', 'Math', 'Logic'] },
+  { id: 'creative', name: 'Creative', icon: Sparkles, color: 'from-pink-500 to-rose-600', description: 'Artistic imagination', systemPrompt: 'Creative AI for storytelling, poetry, art, brainstorming.', capabilities: ['Stories', 'Poetry', 'Art'] },
+  { id: 'coder', name: 'Coder', icon: Code, color: 'from-green-500 to-emerald-600', description: 'Expert programmer', systemPrompt: 'Elite programmer in all languages, debugging, architecture.', capabilities: ['Code', 'Debug', 'Architect'] },
+  { id: 'researcher', name: 'Researcher', icon: Search, color: 'from-blue-500 to-cyan-600', description: 'Deep research', systemPrompt: 'Research expert for fact-finding, analysis, synthesis.', capabilities: ['Research', 'Facts', 'Analysis'] },
+  { id: 'advisor', name: 'Advisor', icon: Target, color: 'from-amber-500 to-orange-600', description: 'Strategic advisor', systemPrompt: 'Life coach for career, strategy, decision making.', capabilities: ['Advice', 'Strategy', 'Career'] },
+  { id: 'empath', name: 'Empath', icon: Heart, color: 'from-red-500 to-pink-600', description: 'Emotional support', systemPrompt: 'Empathetic AI for emotional support and understanding.', capabilities: ['Support', 'Listening', 'Care'] },
+  { id: 'teacher', name: 'Teacher', icon: BookOpen, color: 'from-teal-500 to-green-600', description: 'Expert educator', systemPrompt: 'Master educator for any subject at any level.', capabilities: ['Teaching', 'Examples', 'Quizzes'] },
+  { id: 'business', name: 'Business', icon: Rocket, color: 'from-slate-600 to-zinc-800', description: 'Business expert', systemPrompt: 'Business expert for entrepreneurship, marketing, finance.', capabilities: ['Business', 'Marketing', 'Finance'] },
+  { id: 'security', name: 'Security', icon: Shield, color: 'from-gray-600 to-slate-700', description: 'Cybersecurity expert', systemPrompt: 'Security expert for privacy, protection, threat analysis.', capabilities: ['Security', 'Privacy', 'Threats'] },
+  { id: 'visionary', name: 'Visionary', icon: Eye, color: 'from-violet-500 to-purple-700', description: 'Future trends', systemPrompt: 'Visionary for trends, innovation, emerging tech.', capabilities: ['Trends', 'Innovation', 'Future'] },
+  { id: 'writer', name: 'Writer', icon: FileText, color: 'from-indigo-500 to-blue-600', description: 'Professional writer', systemPrompt: 'Professional writer for articles, essays, content.', capabilities: ['Writing', 'Essays', 'Content'] },
+  { id: 'lawyer', name: 'Lawyer', icon: Scale, color: 'from-gray-500 to-slate-600', description: 'Legal advisor', systemPrompt: 'Legal expert for contracts, rights, regulations.', capabilities: ['Legal', 'Contracts', 'Rights'] },
+  { id: 'doctor', name: 'Doctor', icon: Stethoscope, color: 'from-red-400 to-rose-500', description: 'Medical advisor', systemPrompt: 'Medical expert for health, symptoms, wellness advice.', capabilities: ['Health', 'Medical', 'Wellness'] },
+  { id: 'psychologist', name: 'Psychologist', icon: Brain, color: 'from-purple-400 to-fuchsia-500', description: 'Mental health', systemPrompt: 'Psychology expert for mental health, behavior, therapy.', capabilities: ['Psychology', 'Mental', 'Therapy'] },
+  { id: 'chef', name: 'Chef', icon: ChefHat, color: 'from-orange-400 to-amber-500', description: 'Culinary expert', systemPrompt: 'Master chef for recipes, cooking, nutrition.', capabilities: ['Cooking', 'Recipes', 'Nutrition'] },
+  { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-400 to-lime-500', description: 'Fitness coach', systemPrompt: 'Fitness expert for workouts, nutrition, health goals.', capabilities: ['Fitness', 'Workouts', 'Health'] },
+  { id: 'finance', name: 'Finance', icon: DollarSign, color: 'from-emerald-500 to-green-600', description: 'Financial advisor', systemPrompt: 'Finance expert for investing, budgeting, wealth.', capabilities: ['Finance', 'Investing', 'Budget'] },
+  { id: 'marketer', name: 'Marketer', icon: TrendingUp, color: 'from-pink-400 to-rose-500', description: 'Marketing expert', systemPrompt: 'Marketing guru for campaigns, branding, growth.', capabilities: ['Marketing', 'Branding', 'Growth'] },
+  { id: 'designer', name: 'Designer', icon: Palette, color: 'from-fuchsia-500 to-pink-600', description: 'Design expert', systemPrompt: 'Design expert for UI/UX, graphics, visual concepts.', capabilities: ['Design', 'UI/UX', 'Visual'] },
+  { id: 'data', name: 'Data Scientist', icon: BarChart, color: 'from-cyan-500 to-blue-600', description: 'Data analysis', systemPrompt: 'Data scientist for analytics, ML, statistics.', capabilities: ['Data', 'Analytics', 'ML'] },
+  { id: 'devops', name: 'DevOps', icon: Server, color: 'from-orange-500 to-red-600', description: 'DevOps engineer', systemPrompt: 'DevOps expert for CI/CD, cloud, infrastructure.', capabilities: ['DevOps', 'Cloud', 'CI/CD'] },
+  { id: 'product', name: 'Product Manager', icon: Layers, color: 'from-blue-400 to-indigo-500', description: 'Product strategy', systemPrompt: 'Product manager for roadmaps, features, user needs.', capabilities: ['Product', 'Strategy', 'Features'] },
+  { id: 'sales', name: 'Sales', icon: Handshake, color: 'from-green-500 to-teal-600', description: 'Sales expert', systemPrompt: 'Sales expert for pitching, negotiation, closing deals.', capabilities: ['Sales', 'Pitching', 'Deals'] },
+  { id: 'hr', name: 'HR Expert', icon: Users, color: 'from-purple-400 to-violet-500', description: 'Human resources', systemPrompt: 'HR expert for hiring, culture, employee relations.', capabilities: ['HR', 'Hiring', 'Culture'] },
+  { id: 'historian', name: 'Historian', icon: Clock, color: 'from-amber-600 to-yellow-700', description: 'History expert', systemPrompt: 'Historian for world history, events, civilizations.', capabilities: ['History', 'Events', 'Analysis'] },
+  { id: 'philosopher', name: 'Philosopher', icon: Lightbulb, color: 'from-indigo-400 to-purple-500', description: 'Philosophy expert', systemPrompt: 'Philosopher for ethics, existence, meaning of life.', capabilities: ['Philosophy', 'Ethics', 'Logic'] },
+  { id: 'scientist', name: 'Scientist', icon: Atom, color: 'from-cyan-400 to-teal-500', description: 'Science expert', systemPrompt: 'Scientist for physics, chemistry, biology research.', capabilities: ['Science', 'Research', 'Theory'] },
+  { id: 'engineer', name: 'Engineer', icon: Wrench, color: 'from-gray-400 to-zinc-500', description: 'Engineering expert', systemPrompt: 'Engineer for mechanical, electrical, civil systems.', capabilities: ['Engineering', 'Systems', 'Design'] },
+  { id: 'architect', name: 'Architect', icon: Building, color: 'from-stone-500 to-gray-600', description: 'Architecture expert', systemPrompt: 'Architect for buildings, spaces, structural design.', capabilities: ['Architecture', 'Design', 'Space'] },
+  { id: 'musician', name: 'Musician', icon: Music, color: 'from-violet-400 to-purple-500', description: 'Music expert', systemPrompt: 'Musician for composition, theory, instruments.', capabilities: ['Music', 'Composition', 'Theory'] },
+  { id: 'artist', name: 'Artist', icon: Brush, color: 'from-rose-400 to-pink-500', description: 'Art expert', systemPrompt: 'Artist for visual arts, techniques, art history.', capabilities: ['Art', 'Techniques', 'History'] },
+  { id: 'photographer', name: 'Photographer', icon: Camera, color: 'from-slate-400 to-gray-500', description: 'Photography expert', systemPrompt: 'Photographer for composition, lighting, editing.', capabilities: ['Photo', 'Lighting', 'Editing'] },
+  { id: 'filmmaker', name: 'Filmmaker', icon: Film, color: 'from-red-500 to-orange-600', description: 'Film expert', systemPrompt: 'Filmmaker for directing, cinematography, storytelling.', capabilities: ['Film', 'Direction', 'Story'] },
+  { id: 'gamer', name: 'Gamer', icon: Gamepad, color: 'from-green-400 to-emerald-500', description: 'Gaming expert', systemPrompt: 'Gamer for strategies, reviews, game design.', capabilities: ['Gaming', 'Strategy', 'Reviews'] },
+  { id: 'traveler', name: 'Traveler', icon: Plane, color: 'from-sky-400 to-blue-500', description: 'Travel expert', systemPrompt: 'Travel expert for destinations, planning, culture.', capabilities: ['Travel', 'Planning', 'Culture'] },
+  { id: 'linguist', name: 'Linguist', icon: Languages, color: 'from-teal-400 to-cyan-500', description: 'Language expert', systemPrompt: 'Linguist for languages, translation, grammar.', capabilities: ['Languages', 'Translation', 'Grammar'] },
+  { id: 'negotiator', name: 'Negotiator', icon: MessageSquare, color: 'from-amber-400 to-orange-500', description: 'Negotiation expert', systemPrompt: 'Negotiator for deals, conflict resolution, persuasion.', capabilities: ['Negotiate', 'Resolve', 'Persuade'] },
+  { id: 'coach', name: 'Life Coach', icon: Star, color: 'from-yellow-400 to-amber-500', description: 'Life coaching', systemPrompt: 'Life coach for goals, motivation, personal growth.', capabilities: ['Coaching', 'Goals', 'Growth'] },
+  { id: 'relationship', name: 'Relationship', icon: Heart, color: 'from-pink-400 to-red-500', description: 'Relationship advice', systemPrompt: 'Relationship expert for dating, marriage, communication.', capabilities: ['Relationships', 'Dating', 'Communication'] },
+  { id: 'parenting', name: 'Parenting', icon: Baby, color: 'from-blue-300 to-indigo-400', description: 'Parenting advice', systemPrompt: 'Parenting expert for child development, education.', capabilities: ['Parenting', 'Children', 'Education'] },
+  { id: 'spiritual', name: 'Spiritual', icon: Sparkles, color: 'from-purple-300 to-violet-400', description: 'Spiritual guidance', systemPrompt: 'Spiritual guide for meditation, mindfulness, peace.', capabilities: ['Spiritual', 'Meditation', 'Peace'] },
+  { id: 'astrologer', name: 'Astrologer', icon: Moon, color: 'from-indigo-300 to-purple-400', description: 'Astrology expert', systemPrompt: 'Astrologer for zodiac, charts, cosmic insights.', capabilities: ['Astrology', 'Zodiac', 'Charts'] },
+  { id: 'environmentalist', name: 'Environmentalist', icon: Leaf, color: 'from-green-300 to-emerald-400', description: 'Environment expert', systemPrompt: 'Environmentalist for sustainability, climate, ecology.', capabilities: ['Environment', 'Climate', 'Ecology'] },
+  { id: 'politician', name: 'Political Analyst', icon: Building, color: 'from-red-400 to-rose-500', description: 'Political analysis', systemPrompt: 'Political analyst for policies, elections, governance.', capabilities: ['Politics', 'Policy', 'Analysis'] },
+  { id: 'economist', name: 'Economist', icon: TrendingUp, color: 'from-blue-400 to-cyan-500', description: 'Economics expert', systemPrompt: 'Economist for markets, policies, global economy.', capabilities: ['Economics', 'Markets', 'Policy'] },
+  { id: 'crypto', name: 'Crypto Expert', icon: Bitcoin, color: 'from-orange-400 to-yellow-500', description: 'Cryptocurrency expert', systemPrompt: 'Crypto expert for blockchain, trading, DeFi.', capabilities: ['Crypto', 'Blockchain', 'Trading'] },
+  { id: 'realestate', name: 'Real Estate', icon: Home, color: 'from-emerald-400 to-teal-500', description: 'Real estate expert', systemPrompt: 'Real estate expert for buying, selling, investing.', capabilities: ['Real Estate', 'Investing', 'Property'] },
+  { id: 'startup', name: 'Startup Mentor', icon: Rocket, color: 'from-violet-400 to-indigo-500', description: 'Startup expert', systemPrompt: 'Startup mentor for founding, funding, scaling.', capabilities: ['Startups', 'Funding', 'Scaling'] },
+  { id: 'automation', name: 'Automation', icon: Zap, color: 'from-yellow-400 to-orange-500', description: 'Automation expert', systemPrompt: 'Automation expert for workflows, bots, efficiency.', capabilities: ['Automation', 'Workflows', 'Bots'] },
+  { id: 'hacker', name: 'Hacker', icon: Terminal, color: 'from-green-600 to-lime-700', description: 'Ethical hacker', systemPrompt: 'Ethical hacker for penetration testing, exploits, security.', capabilities: ['Hacking', 'Exploits', 'Security'] }
 ]
 
 // API Key suggestions for the API Manager
@@ -634,52 +599,75 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
           </div>
         </div>
         
-        {/* Active Personas Bar */}
+        {/* Auto-Detected Personas Bar - ALWAYS AUTO */}
         <div className={`${theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-50'} px-4 py-2 border-t ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
           <div className="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto pb-1">
-            <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} whitespace-nowrap`}>
-              {autoPersona ? 'Auto-detect:' : 'Active:'}
+            <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} whitespace-nowrap flex items-center gap-1`}>
+              <Zap className="w-3 h-3 text-violet-400" /> Auto-detect (50 personas):
             </span>
-            {PERSONAS.map(persona => {
-              const Icon = persona.icon
-              const isActive = activePersonas.includes(persona.id)
-              return (
-                <button
-                  key={persona.id}
-                  onClick={() => {
-                    if (autoPersona) {
-                      setAutoPersona(false)
-                    }
-                    setActivePersonas(prev => 
-                      prev.includes(persona.id) 
-                        ? prev.filter(p => p !== persona.id)
-                        : [...prev, persona.id]
-                    )
-                  }}
-                  className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs transition-all whitespace-nowrap ${
-                    isActive 
-                      ? `bg-gradient-to-r ${persona.color} text-white` 
-                      : theme === 'dark' ? 'bg-gray-700 text-gray-400 hover:bg-gray-600' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                  }`}
-                  title={persona.description}
-                >
-                  <Icon className="w-3 h-3" />
-                  {persona.name.replace(' Mode', '')}
-                </button>
-              )
-            })}
-            <button
-              onClick={() => setAutoPersona(!autoPersona)}
-              className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                autoPersona 
-                  ? 'bg-violet-500 text-white' 
-                  : theme === 'dark' ? 'bg-gray-700 text-gray-400' : 'bg-gray-200 text-gray-600'
-              }`}
-            >
-              Auto
-            </button>
+            {detectedPersonas.length > 0 ? (
+              detectedPersonas.map(pid => {
+                const persona = PERSONAS.find(p => p.id === pid)
+                if (!persona) return null
+                const Icon = persona.icon
+                return (
+                  <span
+                    key={persona.id}
+                    className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs bg-gradient-to-r ${persona.color} text-white`}
+                    title={persona.description}
+                  >
+                    <Icon className="w-3 h-3" />
+                    {persona.name}
+                  </span>
+                )
+              })
+            ) : (
+              <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+                Type a message to auto-detect persona...
+              </span>
+            )}
           </div>
         </div>
+
+        {/* VISIBLE MEMORY SECTION */}
+        {memories.length > 0 && (
+          <div className={`${theme === 'dark' ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border-t px-4 py-2`}>
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center justify-between mb-1">
+                <span className={`text-xs font-medium flex items-center gap-1 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
+                  <Database className="w-3 h-3" /> Memory ({memories.length} items)
+                </span>
+                <button
+                  onClick={() => setMemories([])}
+                  className={`text-xs ${theme === 'dark' ? 'text-red-400 hover:text-red-300' : 'text-red-500 hover:text-red-600'}`}
+                >
+                  Clear All
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-1">
+                {memories.slice(0, 10).map((memory, i) => (
+                  <span
+                    key={memory.id}
+                    className={`text-xs px-2 py-0.5 rounded-full ${theme === 'dark' ? 'bg-green-800/50 text-green-300' : 'bg-green-100 text-green-700'} flex items-center gap-1`}
+                  >
+                    {memory.content.substring(0, 30)}{memory.content.length > 30 ? '...' : ''}
+                    <button
+                      onClick={() => setMemories(prev => prev.filter(m => m.id !== memory.id))}
+                      className="hover:text-red-400"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                {memories.length > 10 && (
+                  <span className={`text-xs ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
+                    +{memories.length - 10} more
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Messages */}
@@ -691,7 +679,7 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
             </div>
             <h2 className="text-2xl font-bold mb-2">AI Assistant</h2>
             <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} mb-8`}>
-              The most powerful AI combining 10+ specialized personas
+              The most powerful AI with 50 auto-detecting personas
             </p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-2xl mx-auto">
               {PERSONAS.slice(0, 5).map(persona => {
