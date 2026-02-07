@@ -631,21 +631,35 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
           </div>
         </div>
 
-        {/* VISIBLE MEMORY SECTION */}
-        {memories.length > 0 && (
-          <div className={`${theme === 'dark' ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border-t px-4 py-2`}>
-            <div className="max-w-6xl mx-auto">
-              <div className="flex items-center justify-between mb-1">
-                <span className={`text-xs font-medium flex items-center gap-1 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
-                  <Database className="w-3 h-3" /> Memory ({memories.length} items)
-                </span>
+        {/* VISIBLE MEMORY SECTION - ALWAYS SHOWN */}
+        <div className={`${theme === 'dark' ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border-t px-4 py-2`}>
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-1">
+              <span className={`text-xs font-medium flex items-center gap-1 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
+                <Database className="w-3 h-3" /> 🧠 Memory ({memories.length} items) {useMemory ? '✓ Active' : '○ Paused'}
+              </span>
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setMemories([])}
-                  className={`text-xs ${theme === 'dark' ? 'text-red-400 hover:text-red-300' : 'text-red-500 hover:text-red-600'}`}
+                  onClick={() => setUseMemory(!useMemory)}
+                  className={`text-xs px-2 py-0.5 rounded ${useMemory ? 'bg-green-500 text-white' : 'bg-gray-500 text-white'}`}
                 >
-                  Clear All
+                  {useMemory ? 'ON' : 'OFF'}
                 </button>
+                {memories.length > 0 && (
+                  <button
+                    onClick={() => setMemories([])}
+                    className={`text-xs ${theme === 'dark' ? 'text-red-400 hover:text-red-300' : 'text-red-500 hover:text-red-600'}`}
+                  >
+                    Clear All
+                  </button>
+                )}
               </div>
+            </div>
+            {memories.length === 0 ? (
+              <p className={`text-xs ${theme === 'dark' ? 'text-green-400/60' : 'text-green-600/60'}`}>
+                💡 Say things like "My name is..." or "I like..." or "I work at..." and I'll remember!
+              </p>
+            ) : (
               <div className="flex flex-wrap gap-1">
                 {memories.slice(0, 10).map((memory, i) => (
                   <span
@@ -667,9 +681,9 @@ Always be helpful, accurate, and adapt your tone to match the user's needs. You 
                   </span>
                 )}
               </div>
-            </div>
+            )}
           </div>
-        )}
+        </div>
       </header>
 
       {/* Messages */}
